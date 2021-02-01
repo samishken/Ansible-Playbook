@@ -4,6 +4,9 @@
   become: true
   tasks:
   - name: building docker image
-    command: docker build -t simple-devops-image .
+    command: docker build -t simple-image .
     args:
       chdir: /opt/docker
+  
+  - name: creating docker container
+    command: docker run -d --name simple-container -p 8080:8080 simple-image
